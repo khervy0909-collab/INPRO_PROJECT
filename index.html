@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Recipe & Nutrition Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1> Food Recipe & Nutrition Finder</h1>
+      <p>Search for recipes and nutritional information</p>
+    </header>
+
+    <div class="url-container">
+      <a class="url-btn" href="https://talkabao-app.xo.je/" target="_blank">Free Translator</a>
+    </div>
+
+    <!-- Category -->
+    <div class="category-section">
+      <h2>Recipe Categories</h2>
+      <div class="category-grid">
+
+        <!-- Dessert -->
+        <div class="category-card" onclick="toggleSubGrid('dessertSub')">
+          <img src="img/dessert/dessert.jpg" alt="Dessert">
+          <h3>Dessert</h3>
+        </div>
+        <div id="dessertSub" class="subcategory-grid hidden">
+          <div class="subcategory-card" onclick="searchRecipes('cake')"><img src="img/dessert/cake.jpg"><p>Cake</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('pie')"><img src="img/dessert/pie.jpg"><p>Pie</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('ice cream')"><img src="img/dessert/icecream.jpg"><p>Ice Cream</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('cookies')"><img src="img/dessert/cookies.jpg"><p>Cookies</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('brownies')"><img src="img/dessert/brownies.jpg"><p>Brownies</p></div>
+        </div>
+
+        <!-- Appetizer -->
+        <div class="category-card" onclick="toggleSubGrid('appetizerSub')">
+          <img src="img/appetizer/appetizer.jpg" alt="Appetizer">
+          <h3>Appetizer</h3>
+        </div>
+        <div id="appetizerSub" class="subcategory-grid hidden">
+          <div class="subcategory-card" onclick="searchRecipes('salad')"><img src="img/appetizer/salad.jpg"><p>Salad</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('soup')"><img src="img/appetizer/soup.jpg"><p>Soup</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('bruschetta')"><img src="img/appetizer/bruschetta.jpg"><p>Bruschetta</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('spring rolls')"><img src="img/appetizer/springrolls.jpg"><p>Spring Rolls</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('dips')"><img src="img/appetizer/dips.jpg"><p>Dips</p></div>
+        </div>
+
+        <!-- Breakfast -->
+        <div class="category-card" onclick="toggleSubGrid('breakfastSub')">
+          <img src="img/breakfast/breakfast.jpg" alt="Breakfast">
+          <h3>Breakfast</h3>
+        </div>
+        <div id="breakfastSub" class="subcategory-grid hidden">
+          <div class="subcategory-card" onclick="searchRecipes('pancakes')"><img src="img/breakfast/pancakes.jpg"><p>Pancakes</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('omelet')"><img src="img/breakfast/omelette.jpg"><p>Omelet</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('smoothie')"><img src="img/breakfast/smoothie.jpg"><p>Smoothie</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('waffles')"><img src="img/breakfast/waffles.jpg"><p>Waffles</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('granola')"><img src="img/breakfast/granola.jpg"><p>Granola</p></div>
+        </div>
+
+        <!-- Lunch -->
+        <div class="category-card" onclick="toggleSubGrid('lunchSub')">
+          <img src="img/lunch/lunch.jpg" alt="Lunch">
+          <h3>Lunch</h3>
+        </div>
+        <div id="lunchSub" class="subcategory-grid hidden">
+          <div class="subcategory-card" onclick="searchRecipes('sandwich')"><img src="img/lunch/sandwich.jpg"><p>Sandwich</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('pasta')"><img src="img/lunch/pasta.jpg"><p>Pasta</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('rice bowl')"><img src="img/lunch/ricebowl.jpg"><p>Rice Bowl</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('burger')"><img src="img/lunch/burger.jpg"><p>Burger</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('wraps')"><img src="img/lunch/wraps.jpg"><p>Wraps</p></div>
+        </div>
+
+        <!-- Dinner -->
+        <div class="category-card" onclick="toggleSubGrid('dinnerSub')">
+          <img src="img/dinner/dinner.jpg" alt="Dinner">
+          <h3>Dinner</h3>
+        </div>
+        <div id="dinnerSub" class="subcategory-grid hidden">
+          <div class="subcategory-card" onclick="searchRecipes('steak')"><img src="img/dinner/steak.jpg"><p>Steak</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('curry')"><img src="img/dinner/curry.jpg"><p>Curry</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('roast chicken')"><img src="img/dinner/roastchicken.jpg"><p>Roast Chicken</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('seafood')"><img src="img/dinner/seafood.jpg"><p>Seafood</p></div>
+          <div class="subcategory-card" onclick="searchRecipes('vegetarian')"><img src="img/dinner/vegetarian.jpg"><p>Vegetarian</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-section">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for food, recipe, or ingredient...">
+        <button onclick="search()">Search</button>
+      </div>
+      <div id="recipeResults" class="results"></div>
+      <div id="error" class="error hidden"></div>
+    </div>
+  </div>
+
+  <!-- Nutrition -->
+  <div id="nutritionModal" class="nutrition-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeNutritionModal()">&times;</span>
+      <h2 id="modalRecipeTitle"></h2>
+      <img id="modalRecipeImage" src="" alt="Recipe Image" style="width:100%; border-radius:8px; margin-bottom:15px;">
+
+      <!-- Nutrition -->
+      <h3>Nutrition Facts</h3>
+      <div id="nutritionGrid" class="nutrition-grid"></div>
+
+      <!-- Instructions -->
+      <div id="instructionsSection"></div>
+
+      <!-- Ingredients -->
+      <div id="ingredientsSection"></div>
+
+      <!-- Source Link -->
+      <div id="sourceUrlSection" style="margin-top:15px;"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
